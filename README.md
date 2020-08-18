@@ -1,2 +1,2 @@
 # PythonStore
-PythonStore
+PythonScripts
