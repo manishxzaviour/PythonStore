@@ -56,3 +56,4 @@ while True:
         if state(board, plr2) ==1:
             break
 print(board)
+
