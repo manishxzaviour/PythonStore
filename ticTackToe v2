@@ -1,0 +1,58 @@
+import numpy as np
+
+board = np.zeros((3, 3), dtype='int16')
+pos=[0,0]
+while True:
+    try:
+        plr1=int(input("select for player 1 except for '0'"))
+        plr2=int(input("select for player 2 except for '0'"))
+    except:
+        plr1=plr2=0
+    if plr1!=0 and plr2!=0:
+       break
+
+def place(chk,pos,plr) :
+    for i in range(0,4):
+        for j in range(0,4):
+            if [i,j]==pos:
+                if chk[i,j]==0:
+                    chk[i,j]=plr
+def state(chk,playr):
+    for i in range(0,4):
+        for j in range(0,4):
+            try:
+                if chk[i,j]==chk[i,j-1]==chk[i,j+1]!=0 or chk[i,j]==chk[i-1,j]==chk[i+1,j]!=0:
+                  print("winner!! => Player : ",playr)
+                  return 1
+                elif chk[i,j]==chk[i-1,j-1]==chk[i+1,j+1]!=0 or chk[i,j]==chk[i-1,j+1]==chk[i+1,j-1]!=0:
+                  print("winner!! => Player : ",playr)
+                  return 1
+            except:
+                pass
+    return 0
+while True:
+        print(board)
+        print("player 1 : ")
+        a=input("pos : ")
+        a=a.split()
+        try:
+            a[0]=int(a[0])
+            a[1]=int(a[1])
+            place(board, a, plr1)
+        except:
+            pass
+        if state(board, plr1) ==1:
+            break
+        print(board)
+        print("player 2 : ")
+        b=input("pos : ")
+        b=b.split()
+        try:
+            b[0]=int(b[0])
+            b[1]=int(b[1])
+            place(board, b, plr2)
+        except:
+            pass
+        if state(board, plr2) ==1:
+            break
+print(board)
