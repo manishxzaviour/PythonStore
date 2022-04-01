@@ -13,14 +13,6 @@ while True:
     if plr1!=0 and plr2!=0:
        break
 
-def place(chk,pos,plr) :
-    for i in range(0,4):
-        for j in range(0,4):
-            if [i,j]==pos:
-                if chk[i,j]==0:
-                    chk[i,j]=plr
-                else: return 0
-    return 1
 def state(chk,playr):
     for i in range(0,4):
         for j in range(0,4):
@@ -39,7 +31,7 @@ def pos(chk,plr):
         rx = randint(0, 2)
         ry = randint(0, 2)
         if chk[rx][ry]==0:
-            place(board,[rx,ry],plr)
+            board[rx][ry]=plr
             break
 for i in range(0,10):
     print("player 1 : ")
